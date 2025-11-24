@@ -1,0 +1,59 @@
+﻿<Window x:Class="sistecDesktop.PopupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sistecDesktop"
+        xmlns:viewsPopups="clr-namespace:sistecDesktop.Views.Popups"
+        xmlns:viewModels="clr-namespace:sistecDesktop.ViewModels"
+        xmlns:converters="clr-namespace:sistecDesktop.Converters"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="{Binding PopupTitle}"
+        Height="{Binding PopupHeight}" 
+        Width="{Binding PopupWidth}">
+
+    <Window.Resources>
+
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:EnableRestoreConverter x:Key="EnableRestoreConverter"/>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+        <converters:InverseBoolToEnableConverter x:Key="InverseBoolToEnableConverter"/>
+        <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+
+
+        <DataTemplate DataType="{x:Type viewModels:OpenTicketViewModel}">
+            <viewsPopups:OpenTicketView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:MyTicketsViewModel}">
+            <viewsPopups:MyTicketsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:ApproveTicketsViewModel}">
+            <viewsPopups:ApproveTicketsView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:UserProfileViewModel}">
+            <viewsPopups:UserProfileView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModels:UsersViewModel}">
+            <viewsPopups:UserProfileView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:TicketsScaleViewModel}">
+            <viewsPopups:TicketsScaleView/>
+        </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewModels:MotivoResolucaoViewModel}">
+            <viewsPopups:MotivoResolucao/>
+        </DataTemplate>
+        
+    </Window.Resources>
+
+    <Grid Background="White">
+        <ContentPresenter Content="{Binding}" />
+    </Grid>
+</Window>
